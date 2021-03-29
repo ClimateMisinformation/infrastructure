@@ -1,5 +1,17 @@
 # Infrastructure
-The repository  contains the configuration and code used by our infrastructure. 
+The repository  contains the configuration and code used by our infrastructure. It support the technical work
+needed to deliver the climate change battle cards.
+
+The mission is described here:
+
+https://docs.google.com/document/d/1NiJkhbZkgGmP9ONsF8RyDivzqC8Ty6BLawENDEQLEko/edit#heading=h.v6eqrr3su5ba 
+
+
+##  The scraping code
+Each directory and source has its own scraping scripts.  There is an aim to rationalise these into one 
+python package. This will be located at 
+
+https://github.com/ClimateMisinformation/scraper 
 
 There are  three main dirs for scraping code.
 
@@ -19,12 +31,6 @@ They  run on your machine  after installing docker and are portable between diff
 3) scrape-scripts
 These are the original scripts. They run on your machine, they  work and they save to a CSV file.
 
-##  The scraping code
-Each directory and source has its own scraping scripts.  There is an aim to rationalise these into one 
-python package. This will be located at 
-
-https://github.com/ClimateMisinformation/scraper 
-
 
 ## The sources
 The aim is to scrape all these sources daily and save the articles in a format  usable by the  data science
@@ -35,3 +41,10 @@ https://docs.google.com/spreadsheets/d/1S_pv0cFsYCdrJFp8M-Tc_Vbk221PvhtnCe-QaBr8
 
 ## The  data storage
 Each directory and source has its own way  fo storing the results.
+
+
+## The architecture
+This design is still in early  stage. A candidate  
+
+
+![](imgs/Architecture-Global-Climate-Misinformation.png)
