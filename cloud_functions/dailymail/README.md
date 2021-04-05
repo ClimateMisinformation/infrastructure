@@ -18,15 +18,24 @@ Go to  https://console.cloud.google.com  and select a project. In this example m
 In your project you need to define an endpoint and  reserve the resouces  to store articles. We  use Pub/Sub model described here: https://cloud.google.com/pubsub/docs/overview. 
 
 - The publisher application in our case is the scraper. It extracts the content of articles  and encapsulates them into messages.
-- The subscriber application  is google  topic sucscription. 
+- The subscriber application  is a google  topic sucscription. 
 - Messages are published onto a topic queue and removed if ACK is sent from the subscriber.  
 - Big Query is the datawarehouse used to store the message content long term.
 
-Use the UI or seach
+
+From https://console.cloud.google.com  Use the UI and search for pub/sub or go to https://console.cloud.google.com/cloudpubsub/
 
 ### Create a topic 
-Create a topic as Step 1).  
-- projects/linux-academy-project-91522/topics/hello_topic
+Create a topic as Step 1) In this example  the topic is called "newsarticles". 
+
+The endpoint of the topic is:
+- https://console.cloud.google.com/cloudpubsub/topic/detail/newsarticles?project=linux-academy-project-91522
+
+The topic name is 
+- projects/linux-academy-project-91522/topics/new_articles
+
+You do not need to define the schema of the topic.
+
 
 ### Create a subscription
 Create a subsciption as Step 2).  
