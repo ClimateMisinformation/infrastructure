@@ -8,7 +8,7 @@ https://docs.google.com/document/d/1NiJkhbZkgGmP9ONsF8RyDivzqC8Ty6BLawENDEQLEko/
 
 
 ##  The scraping code
-Each directory and source has its own scraping scripts.  There is an aim to rationalise these into one 
+Each directory and source has its own scraping scripts.  There is a future aim to rationalise these into one 
 python package. This will be located at 
 
 https://github.com/ClimateMisinformation/scraper 
