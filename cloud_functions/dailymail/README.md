@@ -11,6 +11,7 @@ content is then published to either a csv file , a JSON file or Google Big Query
 - Python 3
 - Pip3
 - Google Services authentication
+- Chrome based brower (because Firefox stalls)
 
 ## Usage
 Go to  https://console.cloud.google.com  and select a project. In this example my project  is called "project-id: linux-academy-project-91522". The project you select shoud be your own. You might need to create one.  This is because  you  will have the  correct permissions. Unless you request them you will not have the correct permissions on  the AI for Good   Google cloud project "eng-lightning-244220"
@@ -38,7 +39,7 @@ You do not need to define the schema of the topic.
 
 
 ### Create a subscription
-Create a subsciption as Step 2).  
+Create a subsciption as Step 2). This can be done by checking a box during create topic.
 
 - projects/linux-academy-project-91522/subscriptions/newsarticles-sub 
 
