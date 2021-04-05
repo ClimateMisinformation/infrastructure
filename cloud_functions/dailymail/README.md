@@ -32,7 +32,7 @@ The endpoint of the topic is:
 - https://console.cloud.google.com/cloudpubsub/topic/detail/newsarticles?project=linux-academy-project-91522
 
 The topic name is 
-- projects/linux-academy-project-91522/topics/new_articles
+- projects/linux-academy-project-91522/topics/newsarticles
 
 You do not need to define the schema of the topic.
 
