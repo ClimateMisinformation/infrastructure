@@ -40,7 +40,7 @@ You do not need to define the schema of the topic.
 ### Create a subscription
 Create a subsciption as Step 2).  
 
-- projects/linux-academy-project-91522/subscriptions/hello_topic-sub 
+- projects/linux-academy-project-91522/subscriptions/newsarticles-sub 
 
 ### Create a dataset and table
 Go to https://console.cloud.google.com/bigquery?project=linux-academy-project-91522 and create a datatable. The
@@ -64,7 +64,7 @@ This can also appear  if no data is  present in the dataframe.
 
 1. Initialize  the tool 
 
-        tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="hello_topic", 
+        tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="newsarticles", 
     gbq_dataset='my_dataset', gbq_table='my_table')
 
 2. Scrape the  URLs from the  news site and filter them    
@@ -101,7 +101,7 @@ Manually create a google project, a pub/sub topic, a big query dataset, a big qu
 
 Configure  the tool in the examples file to match your project
 
-    tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="hello_topic", 
+    tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="newsarticles", 
     gbq_dataset='my_dataset', gbq_table='my_table')
 
 
