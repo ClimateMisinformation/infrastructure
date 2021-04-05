@@ -13,12 +13,24 @@ content is then published to either a csv file , a JSON file or Google Big Query
 - Google Services authentication
 
 ## Usage
-Go to  https://console.cloud.google.com  and select a project. In this example the project  is called "project-id: linux-academy-project-91522" 
+Go to  https://console.cloud.google.com  and select a project. In this example my project  is called "project-id: linux-academy-project-91522". The project you select shoud be your own. You might need to create one.  This is because  you  will have the  correct permissions. Unless you request them you will not have the correct permissions on  the AI for Good   Google cloud project "eng-lightning-244220"
+
+In your project you need to define an endpoint and  reserve the resouces  to store articles. We  use Pub/Sub model described here: https://cloud.google.com/pubsub/docs/overview. 
+
+- The publisher application in our case is the scraper. It extracts the content of articles  and encapsulates them into messages.
+- The subscriber application  is google  topic sucscription. 
+- Messages are published onto a topic queue and removed if ACK is sent from the subscriber.  
+- Big Query is the datawarehouse used to store the message content long term.
+
+Use the UI or seach
 
 ### Create a topic 
+Create a topic as Step 1).  
 - projects/linux-academy-project-91522/topics/hello_topic
 
 ### Create a subscription
+Create a subsciption as Step 2).  
+
 - projects/linux-academy-project-91522/subscriptions/hello_topic-sub 
 
 ### Create a dataset and table
