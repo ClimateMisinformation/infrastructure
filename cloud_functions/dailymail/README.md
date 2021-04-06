@@ -43,6 +43,11 @@ Create a subsciption as Step 2). This can be done by checking a box during creat
 
 - projects/linux-academy-project-91522/subscriptions/newsarticles-sub 
 
+The endpoint of the  subscription is
+- https://console.cloud.google.com/cloudpubsub/subscription/detail/newsarticles-sub?project=linux-academy-project-91522
+
+
+
 ### Create a dataset and table
 Go to https://console.cloud.google.com/bigquery?project=linux-academy-project-91522 and create a datatable. The
 dataset in this example is called "my_dataset ". Its URL is https://console.cloud.google.com/bigquery?project=linux-academy-project-91522&p=linux-academy-project-91522&page=dataset&d=my_dataset 
@@ -56,6 +61,42 @@ In this example the data table is called my_table. The schema for the table, so 
     'name': 'date', 'type': 'TIMESTAMP'
     'name': 'tags', 'type': 'STRING'
     'name': 'text', 'type': 'STRING' 
+    
+Or in Avro format
+
+    {
+      "type": "record",
+      "name": "Avro",
+      "fields": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "int",
+          "logicalType": "date"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    }
+    
+The URI for  schema creation is   https://console.cloud.google.com/cloudpubsub/schema/list?cloudshell=true&project=linux-academy-project-91522    
 
 If you try an import dataframes with a different schema the import fails.
 with the message "Please verify that the structure and data types in the DataFrame match the schema of the destination table."
