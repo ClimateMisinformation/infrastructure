@@ -39,7 +39,7 @@ You do not need to define the schema of the topic.
 
 
 ### Create a subscription
-Create a subsciption as Step 2). This can be done by checking a box during create topic.
+Create a subscription as Step 2). This can be done by checking a box during create topic.
 
 - projects/linux-academy-project-91522/subscriptions/newsarticles-sub 
 
@@ -102,9 +102,34 @@ If you try an import dataframes with a different schema the import fails.
 with the message "Please verify that the structure and data types in the DataFrame match the schema of the destination table."
 This can also appear  if no data is  present in the dataframe.
 
-### Using the scraping tool
+### Quickstart using the scraping tool
 
-0. Go to  the  
+0. Go to the  root  of this repo.
+
+     git clone
+     cd infrastructure
+     pip install ./cloud_functions/dailymail/requirements.txt
+     python ./cloud_functions/dailymail/examples.py
+
+
+You will see 
+
+    (venv) C:\Users\richard.hill\PycharmProjects\infrastructure>python ./cloud_functions/dailymail/examples.py
+     * Serving Flask app "examples" (lazy loading)
+     * Environment: production
+       WARNING: This is a development server. Do not use it in a production deployment.
+       Use a production WSGI server instead.
+     * Debug mode: on
+     * Restarting with stat
+     * Debugger is active!
+     * Debugger PIN: 206-483-474
+     * Running on http://127.0.0.1:8088/ (Press CTRL+C to quit)
+
+    
+   Open page  http://127.0.0.1:8088/
+
+
+###  How to configure the  scraper
 
 1. Initialize  the tool 
 
