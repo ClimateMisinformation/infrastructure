@@ -102,7 +102,9 @@ If you try an import dataframes with a different schema the import fails.
 with the message "Please verify that the structure and data types in the DataFrame match the schema of the destination table."
 This can also appear  if no data is  present in the dataframe.
 
-### Use the tool
+### Using the scraping tool
+
+0. Go to  the  
 
 1. Initialize  the tool 
 
