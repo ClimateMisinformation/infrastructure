@@ -106,10 +106,10 @@ This can also appear  if no data is  present in the dataframe.
 
 0. Go to the  root  of this repo.
 
-     git clone
-     cd infrastructure
-     pip install ./cloud_functions/dailymail/requirements.txt
-     python ./cloud_functions/dailymail/examples.py
+        git clone
+        cd infrastructure
+        pip install ./cloud_functions/dailymail/requirements.txt
+        python ./cloud_functions/dailymail/examples.py
 
 
 You will see 
