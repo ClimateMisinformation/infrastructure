@@ -104,12 +104,12 @@ This can also appear  if no data is  present in the dataframe.
 
 ### Quickstart using the scraping tool
 
-0. Go to the  root  of this repo.
+Go to the  root  of this repo.
 
-        git clone
-        cd infrastructure
-        pip install ./cloud_functions/dailymail/requirements.txt
-        python ./cloud_functions/dailymail/examples.py
+    git clone
+    cd infrastructure
+    pip install ./cloud_functions/dailymail/requirements.txt
+    python ./cloud_functions/dailymail/examples.py
 
 
 You will see 
@@ -127,6 +127,8 @@ You will see
 
     
    Open page  http://127.0.0.1:8088/
+   
+   A flask server will start and display "Hello world". To scrape you need to make a HTTP request to another URL on the same server.
 
 
 ###  How to configure the  scraper

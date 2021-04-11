@@ -46,7 +46,8 @@ def scrapeurls(request=request):
         search_url = 'https://www.dailymail.co.uk/'
 
     try:
-        tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="hello_topic",
+        tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522",
+                    gps_topic_id="newsarticles",
                     gbq_dataset='my_dataset'
                     , gbq_table='my_table')
         urls = tool.collect_urls()
@@ -82,7 +83,7 @@ if __name__ == "__main__":
 
     @app.route('/', methods=['POST', 'GET'])
     def default():
-        return
+        return 'Hello World. Fight Climate Misinformation!'
 
 
     app.add_url_rule('/scrapeurls', 'scrapeurls', scrapeurls, methods=['POST', 'GET'], defaults={'request': request})
