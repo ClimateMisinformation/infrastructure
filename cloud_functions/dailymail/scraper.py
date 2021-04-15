@@ -136,7 +136,7 @@ class Tool:
         else:
             return True
 
-    def subscribe_to_urls_topic(self, timeout=2) -> list:
+    def subscribe_to_urls_topic(self, timeout=60) -> list:
         """Receives messages from a google pub/sub topic containing URLS strings from
         a given Pub/Sub subscription and appends them to a list
         which is then returned,
@@ -186,7 +186,7 @@ class Tool:
         subscriber_client.close()
         return self.urls
 
-    def collect_articles(self) -> dict:
+    def collect_articles(self, article_urls) -> dict:
         """ Configures newspaper user agent used to scrape the news-sources. Then receives scrapes the thearticle URLs
         from that  news-source and returns a dict with each row  being an thearticle.
 
@@ -255,7 +255,7 @@ class Tool:
         """
         return
 
-    def publish_article_to_bigquery(self, articles_gbq):
+    def publish_article_to_bigquery(self):
         """ Publishes the  collected article  to a google big query table. The table must  already exist and
         account authentication be setup.
 
@@ -267,11 +267,16 @@ class Tool:
         @Returns  None
 
         """
+        mlist = self.subscribe_to_urls_topic()
+
+        articles_gbq = self.collect_articles(mlist)
+
         dataset_and_table = self.gbq_dataset + '.' + self.gbq_table
         try:
             df = pandas.DataFrame.from_dict(articles_gbq, orient='columns')
             pandas_gbq.to_gbq(df, dataset_and_table, chunksize=5, project_id=self.project_id, if_exists="append")
         except Exception as ex:
+            print("trying to pub")
             print(ex)
         return
 

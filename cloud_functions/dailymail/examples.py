@@ -63,16 +63,16 @@ def scrapeurls(request=request):
 
 
 def publisharticles():
-    tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="hello_topic", gbq_dataset='my_dataset'
+    tool = Tool(domain_url='https://www.dailymail.co.uk/', project_id="linux-academy-project-91522", gps_topic_id="newsarticles", gbq_dataset='my_dataset'
                 , gbq_table='my_table')
 
     try:
-        tool.subscribe_to_urls_topic()
+        tool.publish_article_to_bigquery()
     except Exception as e:
         print(e)
 
-    mydict = tool.collect_articles()
-    tool.publish_article_to_bigquery(mydict)
+
+
 
     return 'Published Articles'
 
