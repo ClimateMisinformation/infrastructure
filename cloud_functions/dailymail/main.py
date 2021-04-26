@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     @app.route('/', methods=['POST', 'GET'])
     def default():
-        return
+        return 'Hello World'
         #return scrapenews(request)
 
 

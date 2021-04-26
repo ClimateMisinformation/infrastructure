@@ -1,28 +1,33 @@
 ## Introduction
-This  is designed to scrape from  different  news sources. The sources are scraped then URLs are filtered 
-according to criteria specific to the  news sources. The list  of  good URLs is then published to a google
-pub/sub topic.  
-
-A second function can be called to consume the  list  of  good URLs and scrape the article content. This 
-content is then published to either a csv file , a JSON file or Google Big Query Table.
+This document describes how to scrape a news source, "http://www.dailymail.co.uk" and store the data in a Google big query table. 
+  
 
 ## Prerequisites
 - A Google account
 - Python 3
 - Pip3
 - Google Services authentication
-- Chrome based brower (because Firefox stalls)
+- Chrome based browser (because Firefox stalls)
+
+## Primer 
+The components we  use and  what  we  do with them described below:
+- Users PC (green)
+    - We run a python scraper  based on  to collect URLs and articles from the news site.
+    - Provision a server locally which invokes the scraper.
+- A google cloud project (blue) 
+    - We define a topic, a subscription and a data warehouse to store articles. 
+    - We  use the Pub/Sub model described here: https://cloud.google.com/pubsub/docs/overview. 
+    - The publisher application in our case is the scraper. It extracts the content of articles  and encapsulates them into messages.
+    - The subscriber application  is a google  topic subscription. 
+    - Messages are published onto a topic queue and removed if ACK is sent from the subscriber.  
+    - Big Query is the data warehouse used to store the message content long term.
+
+
+![Architecture](../../imgs/scraping-arch-flat.png)
+
 
 ## Usage
 Go to  https://console.cloud.google.com  and select a project. In this example my project  is called "project-id: linux-academy-project-91522". The project you select shoud be your own. You might need to create one.  This is because  you  will have the  correct permissions. Unless you request them you will not have the correct permissions on  the AI for Good   Google cloud project "eng-lightning-244220"
-
-In your project you need to define an endpoint and  reserve the resouces  to store articles. We  use Pub/Sub model described here: https://cloud.google.com/pubsub/docs/overview. 
-
-- The publisher application in our case is the scraper. It extracts the content of articles  and encapsulates them into messages.
-- The subscriber application  is a google  topic sucscription. 
-- Messages are published onto a topic queue and removed if ACK is sent from the subscriber.  
-- Big Query is the datawarehouse used to store the message content long term.
-
 
 From https://console.cloud.google.com  Use the UI and search for pub/sub or go to https://console.cloud.google.com/cloudpubsub/
 
@@ -45,7 +50,6 @@ Create a subscription as Step 2). This can be done by checking a box during crea
 
 The endpoint of the  subscription is
 - https://console.cloud.google.com/cloudpubsub/subscription/detail/newsarticles-sub?project=linux-academy-project-91522
-
 
 
 ### Create a dataset and table
