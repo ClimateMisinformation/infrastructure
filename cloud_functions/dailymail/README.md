@@ -155,17 +155,17 @@ Run the examples.py in your python env.
 
     python cloud_functions/dailymail/examples.py
 
-#### Step 4: Invoke the scraping function
+### Step 4: Invoke the scraping function
 A HTTP GET request will cause the domain to be scraped for article urls and these URLS are appended to the "newsarticles" topic you created. 
 
 Open a browser  or HTTP client and  GET http://127.0.0.1:8088/scrapeurls 
 
-#### Step 5: Invoke the publishing function
+### Step 5: Invoke the publishing function
 A HTTP GET request will subscribe to the topic  get the articles content and publish it to the Big Query database you created.
  
 Open a browser  or HTTP client and  GET http://127.0.0.1:8088/publisharticles
  
-#### Step 6: Verify the article data is imported into the datatable. 
+### Step 6: Verify the article data is imported into the datatable. 
 In my case this is visible at  
 https://console.cloud.google.com/bigquery?project=linux-academy-project-91522&d=my_dataset&p=linux-academy-project-91522&page=dataset
  
