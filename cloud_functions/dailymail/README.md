@@ -11,7 +11,7 @@ This document describes how to scrape a news source, "http://www.dailymail.co.uk
 
 ## Primer 
 The components we  use and  what  we  do with them described below:
-- Users PC (green)
+- Local PC (green)
     - We run a python scraper  based on  to collect URLs and articles from the news site.
     - Provision a server locally which invokes the scraper.
 - A google cloud project (blue) 
