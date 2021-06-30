@@ -242,6 +242,31 @@ class Tool:
                 print(ex)
         return articles_content
 
+    def split_text_to_paragraphs(self):
+        """ Receives an article_content dict and splits content of the 'text' key into individual paragraphs which
+        are returned as a list.
+
+        Parameters
+        ----------
+        self.article:  dict
+            a dict of an article
+
+            articles_content = {
+            'url': [],
+            'title': [],
+            'author': [],
+            'date': [],
+            'tags': [],
+            'text': [],
+        }
+
+
+        @Returns list
+
+        """
+
+
+
     @staticmethod
     def publish_articles_to_topic():
         """ Publishes the  collected articles to a google pub/sub topic. The topic must  already  exist and
