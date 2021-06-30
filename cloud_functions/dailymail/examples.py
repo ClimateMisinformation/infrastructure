@@ -33,10 +33,9 @@ http://127.0.0.1:8088/publisharticles  subscribes to publishes
 """
 
 
-
-def scrapeurls(request=request):
-    request_json = request.get_json(silent=True)
-    request_args = request.args
+def scrapeurls(xrequest=request):
+    request_json = xrequest.get_json(silent=True)
+    request_args = xrequest.args
 
     if request_json and 'url' in request_json:
         search_url = request_json['url']
@@ -70,9 +69,6 @@ def publisharticles():
         tool.publish_article_to_bigquery()
     except Exception as e:
         print(e)
-
-
-
 
     return 'Published Articles'
 
