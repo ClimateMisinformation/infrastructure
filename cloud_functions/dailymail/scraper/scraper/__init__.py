@@ -21,16 +21,17 @@ import newspaper
 from newspaper import Config
 from newspaper.utils import BeautifulSoup
 from google.cloud import pubsub_v1
+
 # from pandas_gbq import schema
 
 """ 
     When run as  main script, this script scrapes the URL passed as arg[0] for news articles. 
     If URL passes the criteria defined by filter_url(). i.e. URLs containing in page HTML anchor links, 
     such as  /#respond are ignored.
-    
+
     Each URL is visited and the HTML content is extracted using https://newspaper.readthedocs.io/. 
     Newspaper also cleans inner element text by converting it to UTF8.  
-   
+
     The data extracted populates rows in an "Articles"  dictionary
 
        article_content = {
@@ -41,7 +42,7 @@ from google.cloud import pubsub_v1
        'tags': [],
        'text': [],
        }
-       
+
    Finally a file  is created in /tmp/output.json. The "Articles" dictionary is converted to a Panda dataframe 
    then saved as JSON.    
 
@@ -50,12 +51,12 @@ from google.cloud import pubsub_v1
 
 class Tool:
     def __init__(self, domain_url, project_id=None, gps_topic_id=None, gbq_dataset=None, gbq_table=None, timeout=10):
-        self.domain_url = domain_url      # The domain to scrape
-        self.project_id = project_id      # The google project URL
+        self.domain_url = domain_url  # The domain to scrape
+        self.project_id = project_id  # The google project URL
         self.gps_topic_id = gps_topic_id  # The google pub/sub topic id
-        self.gbq_dataset = gbq_dataset    # The google big query dataset
-        self.gbq_table = gbq_table        # The  google big query table
-        self.timeout = timeout            # The time the subscribe call back runs for
+        self.gbq_dataset = gbq_dataset  # The google big query dataset
+        self.gbq_table = gbq_table  # The  google big query table
+        self.timeout = timeout  # The time the subscribe call back runs for
         self.urls = []
 
     def __repr__(self):
@@ -241,6 +242,31 @@ class Tool:
                 print(ex)
         return articles_content
 
+    def split_text_to_paragraphs(self):
+        """ Receives an article_content dict and splits content of the 'text' key into individual paragraphs which
+        are returned as a list.
+
+        Parameters
+        ----------
+        self.article:  dict
+            a dict of an article
+
+            articles_content = {
+            'url': [],
+            'title': [],
+            'author': [],
+            'date': [],
+            'tags': [],
+            'text': [],
+        }
+
+
+        @Returns list
+
+        """
+
+
+
     @staticmethod
     def publish_articles_to_topic():
         """ Publishes the  collected articles to a google pub/sub topic. The topic must  already  exist and
@@ -370,7 +396,7 @@ if __name__ == "__main__":
 
         If a URL in the list passes the criteria defined by filter_url(), then it is visited and its content extracted 
         using Beautiful soup.  B. Soup cleans up the inner element text by converting it to UTF8.  
-                
+
         The data extracted is saved to a dictionary with the structure below
 
         article_content = {
@@ -381,7 +407,7 @@ if __name__ == "__main__":
         'tags': [],
         'text': [],
         }
-        
+
        The rows of the dictionary are then exported and saved as a json file in /tmp/  
 
     """
@@ -390,7 +416,7 @@ if __name__ == "__main__":
        create argument parser to receive URL to scrape
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("--url",  help="base URL of the news source")
+    parser.add_argument("--url", help="base URL of the news source")
     args = parser.parse_args()
     if args.url:
         search_url = args.url
@@ -421,18 +447,18 @@ if __name__ == "__main__":
         urls = tool.collect_urls()
         filtered_urls = [
             url for url in urls if tool.filter_urls(url)]
-        print(f'After filtering {search_url} there are  { len(filtered_urls) } articles')
+        print(f'After filtering {search_url} there are  {len(filtered_urls)} articles')
     except Exception as e:
         print(e)
 
     article_content = {
-            'url': [],
-            'title': [],
-            'author': [],
-            'date': [],
-            'tags': [],
-            'text': [],
-        }
+        'url': [],
+        'title': [],
+        'author': [],
+        'date': [],
+        'tags': [],
+        'text': [],
+    }
 
     for url_index, url in enumerate(filtered_urls):
         # print(url)
