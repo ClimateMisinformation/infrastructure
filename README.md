@@ -1,3 +1,6 @@
+# Archived June 2022 
+We will focus on building bots to detect greenwashing.
+
 # Infrastructure
 The repository  contains the configuration and code used by our infrastructure. It support the technical work
 needed to deliver the climate change battle cards.
